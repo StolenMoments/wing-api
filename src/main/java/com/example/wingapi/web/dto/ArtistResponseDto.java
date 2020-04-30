@@ -9,6 +9,7 @@ import java.sql.Date;
 public class ArtistResponseDto {
 
     private final Long artistId;
+    private final String artistName;
     private final String artistCompany;
     private final String artistGenre;
     private final Date debutDate;
@@ -20,6 +21,7 @@ public class ArtistResponseDto {
 
     public ArtistResponseDto(Artist entity) {
         this.artistId = entity.getArtistId();
+        this.artistName = entity.getArtistName();
         this.artistCompany = entity.getArtistCompany();
         this.artistGenre = entity.getArtistGenre();
         this.debutDate = entity.getDebutDate();

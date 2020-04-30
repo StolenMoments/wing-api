@@ -27,7 +27,8 @@ public class Artist {
     private String bank;
 
     @Builder
-    public Artist(String artistName, String artistCompany, String artistGenre, Date debutDate, String imageUri, String description, String realName, String account, String bank) {
+    public Artist(Long artistId, String artistName, String artistCompany, String artistGenre, Date debutDate, String imageUri, String description, String realName, String account, String bank) {
+        this.artistId = artistId;
         this.artistName = artistName;
         this.artistCompany = artistCompany;
         this.artistGenre = artistGenre;

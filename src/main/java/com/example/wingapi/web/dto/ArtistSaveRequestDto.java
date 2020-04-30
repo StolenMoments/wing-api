@@ -4,6 +4,7 @@ import com.example.wingapi.domain.artist.Artist;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import java.sql.Date;
 
@@ -11,6 +12,7 @@ import java.sql.Date;
 @Getter
 public class ArtistSaveRequestDto {
 
+    private Long artistId;
     private String artistName;
     private String artistCompany;
     private String artistGenre;
@@ -22,7 +24,8 @@ public class ArtistSaveRequestDto {
     private String bank;
 
     @Builder
-    public ArtistSaveRequestDto(String artistName, String artistCompany, String artistGenre, Date debutDate, String imageUri, String description, String realName, String account, String bank) {
+    public ArtistSaveRequestDto(Long artistId, String artistName, String artistCompany, String artistGenre, Date debutDate, String imageUri, String description, String realName, String account, String bank) {
+        this.artistId = artistId;
         this.artistName = artistName;
         this.artistCompany = artistCompany;
         this.artistGenre = artistGenre;
@@ -36,6 +39,7 @@ public class ArtistSaveRequestDto {
 
     public Artist toEntity() {
         return Artist.builder()
+                .artistId(artistId)
                 .artistName(artistName)
                 .artistCompany(artistCompany)
                 .artistGenre(artistGenre)
