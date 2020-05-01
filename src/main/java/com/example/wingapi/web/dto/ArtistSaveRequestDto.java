@@ -4,7 +4,6 @@ import com.example.wingapi.domain.artist.Artist;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import java.sql.Date;
 

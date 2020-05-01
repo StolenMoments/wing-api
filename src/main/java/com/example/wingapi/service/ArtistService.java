@@ -23,6 +23,13 @@ public class ArtistService {
         return artistRepository.save(requestDto.toEntity()).getArtistId();
     }
 
+    @Transactional
+    public void delete(Long id) {
+        Artist entity = artistRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("Not Found Data : id=" + id));
+        artistRepository.delete(entity);
+    }
+
     public ArtistResponseDto findById(Long id) {
         Artist entity = artistRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("Not Found Data : id=" + id));

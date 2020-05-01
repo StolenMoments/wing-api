@@ -38,9 +38,16 @@ public class ArtistController {
         return artistService.save(requestDto);
     }
 
+
+    @ApiOperation(value = "아티스트 수정", notes = "아티스트 삭제")
     @PutMapping("/api/artist")
     private Long update(@RequestBody ArtistSaveRequestDto requestDto) {
         return artistService.save(requestDto);
     }
+
+
+    @ApiOperation(value = "아티스트 삭제", notes = "아티스트 삭제")
+    @DeleteMapping("api/artist/{id}")
+    private void delete(@PathVariable Long id) { artistService.delete(id); }
 
 }
