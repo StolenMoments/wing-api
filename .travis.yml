@@ -16,3 +16,20 @@ notification:
   email:
     recipients:
       - "unknown9732@naver.com"
+
+
+before_deploy:
+  - zip -r wing-api *
+  - mkdir -p deploy
+  - mv wing-api.zip deploy/wing-aip.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: wing-api-build
+    regin: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
