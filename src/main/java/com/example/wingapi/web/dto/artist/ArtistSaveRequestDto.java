@@ -1,4 +1,4 @@
-package com.example.wingapi.web.dto;
+package com.example.wingapi.web.dto.artist;
 
 import com.example.wingapi.domain.artist.Artist;
 import lombok.Builder;
@@ -11,11 +11,11 @@ import java.sql.Date;
 @Getter
 public class ArtistSaveRequestDto {
 
-    private Long artistId;
     private String artistName;
     private String artistCompany;
     private String artistGenre;
     private Date debutDate;
+    private String video;
     private String imageUri;
     private String description;
     private String realName;
@@ -23,12 +23,15 @@ public class ArtistSaveRequestDto {
     private String bank;
 
     @Builder
-    public ArtistSaveRequestDto(Long artistId, String artistName, String artistCompany, String artistGenre, Date debutDate, String imageUri, String description, String realName, String account, String bank) {
-        this.artistId = artistId;
+    public ArtistSaveRequestDto(String artistName, String artistCompany, String artistGenre,
+                                Date debutDate, String video, String imageUri,
+                                String description, String realName, String account, String bank) {
+
         this.artistName = artistName;
         this.artistCompany = artistCompany;
         this.artistGenre = artistGenre;
         this.debutDate = debutDate;
+        this.video = video;
         this.imageUri = imageUri;
         this.description = description;
         this.realName = realName;
@@ -38,11 +41,11 @@ public class ArtistSaveRequestDto {
 
     public Artist toEntity() {
         return Artist.builder()
-                .artistId(artistId)
                 .artistName(artistName)
                 .artistCompany(artistCompany)
                 .artistGenre(artistGenre)
                 .debutDate(debutDate)
+                .video(video)
                 .imageUri(imageUri)
                 .description(description)
                 .realName(realName)

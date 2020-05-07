@@ -1,8 +1,8 @@
 package com.example.wingapi.web;
 
 import com.example.wingapi.service.ArtistService;
-import com.example.wingapi.web.dto.ArtistResponseDto;
-import com.example.wingapi.web.dto.ArtistSaveRequestDto;
+import com.example.wingapi.web.dto.artist.ArtistResponseDto;
+import com.example.wingapi.web.dto.artist.ArtistSaveRequestDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -39,15 +39,15 @@ public class ArtistController {
     }
 
 
-    @ApiOperation(value = "아티스트 수정", notes = "아티스트 삭제")
-    @PutMapping("/api/artist")
-    private Long update(@RequestBody ArtistSaveRequestDto requestDto) {
-        return artistService.save(requestDto);
+    @ApiOperation(value = "아티스트 수정", notes = "아티스트 수정")
+    @PutMapping("/api/artist/{id}")
+    private Long update(@PathVariable Long id, @RequestBody ArtistSaveRequestDto requestDto) {
+        return artistService.update(id, requestDto);
     }
 
 
     @ApiOperation(value = "아티스트 삭제", notes = "아티스트 삭제")
     @DeleteMapping("api/artist/{id}")
-    private void delete(@PathVariable Long id) { artistService.delete(id); }
+    private Long delete(@PathVariable Long id) { return artistService.delete(id); }
 
 }
