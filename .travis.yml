@@ -21,7 +21,7 @@ notification:
 before_deploy:
   - zip -r wing-api *
   - mkdir -p deploy
-  - mv wing-api.zip deploy/wing-aip.zip
+  - mv wing-api.zip deploy/wing-api.zip
 
 deploy:
   - provider: s3
@@ -38,7 +38,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: wing-api-build
-    key: wing-aip.zip
+    key: wing-api.zip
 
     bundle_type: zip
     application: wing-api
