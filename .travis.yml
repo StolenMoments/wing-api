@@ -43,7 +43,6 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: wing-api-build
     key: wing-api.zip
-
     bundle_type: zip
     application: wing-api
     deployment_group: wing-api-group
