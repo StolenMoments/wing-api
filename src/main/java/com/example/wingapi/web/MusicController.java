@@ -15,7 +15,7 @@ import java.util.List;
 @Api(tags = {"Music Controller"})
 @RestController
 @AllArgsConstructor
-@CrossOrigin
+@CrossOrigin()
 public class MusicController {
 
     private final MusicService musicService;
