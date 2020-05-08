@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @EnableJpaAuditing
 @SpringBootApplication
-@CrossOrigin
 public class WingApiApplication {
 
     public static void main(String[] args) {
