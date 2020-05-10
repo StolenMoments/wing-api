@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 public class MusicResponseDto {
 
-    private final String musicId;
+    private final Long musicId;
     private final String musicName;
     private final String musicGenre;
     private final String fileUri;
