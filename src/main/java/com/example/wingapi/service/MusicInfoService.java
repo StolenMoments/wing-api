@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 @RequiredArgsConstructor
 @Service
 public class MusicInfoService {
@@ -30,5 +32,23 @@ public class MusicInfoService {
         music.getInfos().add(musicInfo);
 
         album.getMusicList().add(music);
+    }
+
+
+    @Transactional
+    public void delete(Artist deleteArtist, Music music) {
+
+        Set<MusicInfo> infos = music.getInfos();
+        infos.removeIf(info -> info.getArtist() == deleteArtist);
+        music.infosUpdate(infos);
+
+        Set<MusicInfo> musicInfos = musicInfoRepository.findByMusic_MusicId(music.getMusicId());
+
+        for (MusicInfo info : musicInfos) {
+            if (info.getArtist() == deleteArtist) {
+                System.out.println(info.getArtist().getArtistId() + " 삭제");
+                musicInfoRepository.delete(info);
+            }
+        }
     }
 }

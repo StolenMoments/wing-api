@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -30,10 +30,10 @@ public class Album {
 
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
-    List<MusicInfo> infos = new ArrayList<>();
+    Set<MusicInfo> infos = new HashSet<>();
 
     @OneToMany(mappedBy = "toAlbum", cascade = CascadeType.ALL)
-    List<Music> musicList = new ArrayList<>();
+    Set<Music> musicList = new HashSet<>();
 
     @Builder
     public Album(String albumName, String albumGenre, String company,
