@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 public class MusicResponseDto {
 
+    private final String musicId;
     private final String musicName;
     private final String musicGenre;
     private final String fileUri;
@@ -20,6 +21,7 @@ public class MusicResponseDto {
     private final List<Long> artistIdList;
 
     public MusicResponseDto(Music entity) {
+        this.musicId = entity.getMusicId();
         this.musicName = entity.getMusicName();
         this.musicGenre = entity.getMusicGenre();
         this.fileUri = entity.getFileUri();
