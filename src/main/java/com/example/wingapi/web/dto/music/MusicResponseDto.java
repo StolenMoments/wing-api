@@ -4,8 +4,7 @@ import com.example.wingapi.domain.music.Music;
 import com.example.wingapi.domain.musicInfo.MusicInfo;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 public class MusicResponseDto {
@@ -18,7 +17,7 @@ public class MusicResponseDto {
     private final String lyrics;
     private final Long likeCnt;
     private final Long albumId;
-    private final List<Long> artistIdList;
+    private final Set<Map<String, String>> artistList;
 
     public MusicResponseDto(Music entity) {
         this.musicId = entity.getMusicId();
@@ -30,10 +29,12 @@ public class MusicResponseDto {
         this.likeCnt = entity.getLikeCnt();
         this.albumId = entity.getToAlbum().getAlbumId();
 
-        this.artistIdList = new ArrayList<>();
-        for(MusicInfo info : entity.getInfos())
-            artistIdList.add(info.getArtist().getArtistId());
-
+        this.artistList = new HashSet<>();
+        for(MusicInfo info : entity.getInfos()) {
+            Map<String, String> artistObj = new HashMap<>();
+            artistObj.put("artistId", info.getArtist().getArtistId().toString());
+            artistObj.put("artistName", info.getArtist().getArtistName());
+            artistList.add(artistObj);
+        }
     }
-
 }

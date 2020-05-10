@@ -5,10 +5,7 @@ import com.example.wingapi.domain.musicInfo.MusicInfo;
 import lombok.Getter;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 public class ArtistResponseDto {
@@ -24,8 +21,8 @@ public class ArtistResponseDto {
     private final String realName;
     private final String account;
     private final String bank;
-    private final Set<Long> albumIdList;
-    private final List<Long> musicIdList;
+    private final Set<Map<String, String>> albumList;
+    private final Set<Map<String, String>> musicList;
 
     public ArtistResponseDto(Artist entity) {
         this.artistId = entity.getArtistId();
@@ -40,11 +37,19 @@ public class ArtistResponseDto {
         this.account = entity.getAccount();
         this.bank = entity.getBank();
 
-        this.albumIdList = new HashSet<>();
-        this.musicIdList = new ArrayList<>();
+        this.albumList = new HashSet<>();
+        this.musicList = new HashSet<>();
+
         for(MusicInfo info : entity.getInfos()) {
-            albumIdList.add(info.getAlbum().getAlbumId());
-            musicIdList.add(info.getMusic().getMusicId());
+            Map<String, String> musicObj = new HashMap<>();
+            Map<String, String> albumObj = new HashMap<>();
+
+            albumObj.put("albumId", info.getAlbum().getAlbumId().toString());
+            albumObj.put("albumName", info.getAlbum().getAlbumName());
+            musicObj.put("musicId", info.getMusic().getMusicId().toString());
+            musicObj.put("musicName", info.getMusic().getMusicName());
+            albumList.add(albumObj);
+            musicList.add(musicObj);
         }
 
     }

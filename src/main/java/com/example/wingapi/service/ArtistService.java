@@ -18,7 +18,9 @@ public class ArtistService {
 
     private final ArtistRepository artistRepository;
 
-    public IllegalArgumentException exception = new IllegalArgumentException("아티스트 정보 없음");
+    public IllegalArgumentException exception(Long id) {
+        return new IllegalArgumentException("아티스트 정보 없음" + id);
+    }
 
 
     @Transactional
@@ -31,7 +33,7 @@ public class ArtistService {
     @Transactional
     public Long update(Long id, ArtistSaveRequestDto requestDto) {
         Artist artist = artistRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아티스트 정보 없음 id=" + id));
+                () -> exception(id));
 
         artist.update(requestDto.getArtistName(), requestDto.getArtistCompany(),
                 requestDto.getArtistGenre(), requestDto.getDebutDate(), requestDto.getVideo(),
@@ -44,7 +46,7 @@ public class ArtistService {
     @Transactional
     public Long delete(Long id) {
         Artist entity = artistRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아티스트 정보 없음 : id=" + id));
+                () -> exception(id));
 
         artistRepository.delete(entity);
 
@@ -53,7 +55,7 @@ public class ArtistService {
 
     public ArtistResponseDto findById(Long id) {
         Artist entity = artistRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아티스트 정보 없음 : id=" + id));
+                () -> exception(id));
 
         return new ArtistResponseDto(entity);
     }
