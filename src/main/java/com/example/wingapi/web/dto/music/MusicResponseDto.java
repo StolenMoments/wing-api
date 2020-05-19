@@ -30,7 +30,6 @@ public class MusicResponseDto {
         this.likeCnt = entity.getLikeCnt();
         this.albumName = entity.getToAlbum().getAlbumName();
         this.albumImage = entity.getToAlbum().getImageUri();
-
         this.artistList = new HashSet<>();
         for(MusicInfo info : entity.getInfos()) {
             Map<String, String> artistObj = new HashMap<>();

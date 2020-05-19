@@ -46,6 +46,8 @@ public class ArtistResponseDto {
 
             albumObj.put("albumId", info.getAlbum().getAlbumId().toString());
             albumObj.put("albumName", info.getAlbum().getAlbumName());
+            albumObj.put("ImageUri", info.getAlbum().getImageUri());
+            albumObj.put("date", info.getAlbum().getDate().toString());
             musicObj.put("musicId", info.getMusic().getMusicId().toString());
             musicObj.put("musicName", info.getMusic().getMusicName());
             albumList.add(albumObj);
