@@ -19,6 +19,7 @@ public class MusicResponseDto {
     private final Set<Map<String, String>> artistList;
     private final String albumImage;
     private final String albumName;
+    private final Long albumId;
 
     public MusicResponseDto(Music entity) {
         this.musicId = entity.getMusicId();
@@ -30,7 +31,9 @@ public class MusicResponseDto {
         this.likeCnt = entity.getLikeCnt();
         this.albumName = entity.getToAlbum().getAlbumName();
         this.albumImage = entity.getToAlbum().getImageUri();
+        this.albumId = entity.getToAlbum().getAlbumId();
         this.artistList = new HashSet<>();
+
         for(MusicInfo info : entity.getInfos()) {
             Map<String, String> artistObj = new HashMap<>();
             artistObj.put("artistId", info.getArtist().getArtistId().toString());
