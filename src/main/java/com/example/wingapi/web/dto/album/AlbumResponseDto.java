@@ -38,6 +38,7 @@ public class AlbumResponseDto {
             musicObj.put("musicId", music.getMusicId().toString());
             musicObj.put("musicName", music.getMusicName());
             musicObj.put("fileUri", music.getFileUri());
+            musicObj.put("trackNumber", Integer.toString(music.getTrackNumber()));
             musicList.add(musicObj);
         }
 
