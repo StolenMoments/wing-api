@@ -1,6 +1,5 @@
 package com.example.wingapi.domain.transactionData;
 
-import com.example.wingapi.domain.artist.Artist;
 import com.example.wingapi.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

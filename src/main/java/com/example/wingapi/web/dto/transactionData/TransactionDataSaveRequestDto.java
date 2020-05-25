@@ -28,8 +28,6 @@ public class TransactionDataSaveRequestDto {
     }
 
 
-    // TODO
-    // 파라미터에 User user 추가, 빌더에 user 추가하기
     public TransactionData toEntity(User user, Artist artist) {
         return TransactionData.builder()
                 .user(user)
